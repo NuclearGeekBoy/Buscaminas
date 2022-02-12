@@ -1,1 +1,2 @@
 # Buscaminas
+the game
