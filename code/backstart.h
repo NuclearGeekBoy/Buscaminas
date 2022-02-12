@@ -37,6 +37,6 @@ typedef struct
 }tile_t;
 
 /*FUNCTS*/
-void print_clear(char,char,char mat[BEGINNER][BEGINNER]); //
+void print_clear(char,char,tile_t mat[BEGINNER][BEGINNER]); //
 
 #endif
