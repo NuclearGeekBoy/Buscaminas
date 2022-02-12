@@ -30,6 +30,11 @@ typedef struct
     uint8_t bombs; //initial bomb amount
 }game_invar; //game constants, invariables,
 
+typedef struct
+{
+    uint8_t in_vision :4;
+    uint8_t off_vision :4;
+}tile_t;
 
 /*FUNCTS*/
 void print_clear(char,char,char mat[BEGINNER][BEGINNER]); //
