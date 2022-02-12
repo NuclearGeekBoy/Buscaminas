@@ -5,6 +5,7 @@
 #include<stdio.h>
 #include<time.h>
 #include<stdlib.h>
+#include<stdint.h>
 
 /*BASIC DEFINITIONS*/
 #define BEGINNER 9 //modes for the game
