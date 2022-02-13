@@ -1,6 +1,6 @@
 #include "backend.h"
 
-void print_clear(char clear,char size_mat,tile_t mat[8][8])
+void print_clear(char clear,char size_mat,tile_t mat[size_mat][size_mat])
 {
     char cont_x,cont_y;
     
