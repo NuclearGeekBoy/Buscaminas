@@ -15,6 +15,14 @@
 #define IMINE 40
 #define EMINE 99
 
+/*here you can find some basic definitions of what the numbers mean inside the matrix, in vision and off vision*/
+#define EMPTY 0
+/*from 1 to 8, means the amount of bombs nearby*/
+#define BOMB 9
+#define UNDISCOVERED 10 //every game you start with every tile undiscovered
+#define FLAG 11  //players shall put flags or question marks on the undiscovered tiles
+#define QMARK 12 
+
 /*STRUCTS FOR PUBLIC USE*/
 typedef struct 
 {
