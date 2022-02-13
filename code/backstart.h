@@ -15,13 +15,17 @@
 #define IMINE 40
 #define EMINE 99
 
+typedef struct
+{
+    uint8_t in_vision :2; //0 = undiscovered, 1 = flag, 2 = Question mark, 3 = discovered
+    uint8_t off_vision :4; // 0 - 8 = the amount of bombs nearby, 10 = bomb
+    uint8_t unused :2; //probably doing some weird shit in the future
+}tile_t;
+
 /*here you can find some basic definitions of what the numbers mean inside the matrix, in vision and off vision*/
-#define EMPTY 0
-/*from 1 to 8, means the amount of bombs nearby*/
-#define BOMB 9
-#define UNDISCOVERED 10 //every game you start with every tile undiscovered
-#define FLAG 11  //players shall put flags or question marks on the undiscovered tiles
-#define QMARK 12 
+/*from 0 to 8, means the amount of bombs nearby*/
+#define BOMB 10
+#define SAFE 0 //no bombs in the tile nor nearby
 
 /*STRUCTS FOR PUBLIC USE*/
 typedef struct 
@@ -38,11 +42,7 @@ typedef struct
     uint8_t bombs; //initial bomb amount
 }game_invar; //game constants, invariables,
 
-typedef struct
-{
-    uint8_t in_vision :4;
-    uint8_t off_vision :4;
-}tile_t;
+
 
 /*FUNCTS*/
 void print_clear(char,char,tile_t mat[BEGINNER][BEGINNER]); //
