@@ -45,6 +45,6 @@ typedef struct
 
 
 /*FUNCTS*/
-void print_clear(char,char,tile_t mat[BEGINNER][BEGINNER]); //
+void print_clear(char,char,tile_t mat[size_mat][size_mat]); //
 
 #endif
