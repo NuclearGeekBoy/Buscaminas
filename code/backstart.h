@@ -43,5 +43,15 @@ typedef struct
 
 /*FUNCTS*/
 void print_clear(char,char,tile_t mat[size_mat][size_mat]); //
+/*
+ - llenar el off vision
+ - switchear in vision
+ - game over 
+ - rellenar estructuras
+ - maquina de estado de menu
+ - reesctructurar backend
+ - aprender time.h
+ -
 
+*/
 #endif
