@@ -18,12 +18,11 @@
 typedef struct
 {
     uint8_t in_vision :2; //0 = undiscovered, 1 = flag, 2 = Question mark, 3 = discovered
-    uint8_t off_vision :4; // 0 - 8 = the amount of bombs nearby, 10 = bomb
+    uint8_t off_vision :4; // 0 to 8 = the amount of bombs nearby, 10 = bomb
     uint8_t unused :2; //probably doing some weird shit in the future
 }tile_t;
 
-/*here you can find some basic definitions of what the numbers mean inside the matrix, in vision and off vision*/
-/*from 0 to 8, means the amount of bombs nearby*/
+/*here you can find some basic definitions, in vision and off vision meaning*/
 #define BOMB 10
 #define SAFE 0 //no bombs in the tile nor nearby
 
@@ -41,8 +40,6 @@ typedef struct
     uint16_t width;
     uint8_t bombs; //initial bomb amount
 }game_invar; //game constants, invariables,
-
-
 
 /*FUNCTS*/
 void print_clear(char,char,tile_t mat[size_mat][size_mat]); //
