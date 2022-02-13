@@ -12,7 +12,7 @@ typedef struct
 {
     uint8_t in_vision :2; //0 = undiscovered, 1 = flag, 2 = Question mark, 3 = discovered
     uint8_t off_vision :4; // 0 - 8 = the amount of bombs nearby, 10 = bomb
-    uint8_t  :2; //probably doing some weird shit in the future
+    uint8_t unused :2; //probably doing some weird shit in the future
 }tile_t;
 
 typedef struct
