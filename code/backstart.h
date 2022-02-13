@@ -42,7 +42,8 @@ typedef struct
 }game_invar; //game constants, invariables,
 
 /*FUNCTS*/
-void print_clear(char,char,tile_t mat[size_mat][size_mat]); //
+void print_clear(char,char,tile_t mat[size_mat][size_mat]);
+void init_mat(tile_t mat[size_mat][size_mat]);
 /*
  - llenar el off vision
  - switchear in vision
