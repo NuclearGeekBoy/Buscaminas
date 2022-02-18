@@ -24,52 +24,73 @@ typedef struct
 
 typedef struct
 {
+    uint8_t first_x; //first tile clicked x and y starting from 0 on the left-up corner
+    uint8_t first_y;
     uint16_t length; //mat size
     uint16_t width;
     uint8_t bombs; //initial bomb amount
 }game_invar;
 
 //functs
-void print_clear(char,char,tile_t mat[size_mat][size_mat]);
-void init_mat(tile_t [size_mat][size_mat]);
-
+void init_mat(char size_y,char size_x,tile_t mat[size_y][size_x]);
+void print_clear(char size_y,char size_x,tile_t mat[size_y][size_x]);
+void set_mines(tile_t[game_invar.width][game_invar.length],game_invar*);
 
 int main()
 {
-    tile_t mat[size_mat][size_mat];
-    init_mat(mat);
-    print_clear(1,size_mat,mat);
-
+    srand(time(NULL));
+    tile_t mat[size_mat][size_mat+size_mat];
+    init_mat(size_mat,size_mat+size_mat,mat);
+    print_clear(size_mat,size_mat+size_mat,mat);
+    game_invar game;
 }
 
-void init_mat(tile_t mat[size_mat][size_mat])
+void init_mat(char size_y,char size_x,tile_t mat[size_y][size_x])
 {
-    int cont_x, cont_y;
-    for(cont_y = 0 ; cont_y < size_mat ; cont_y++){
-            for(cont_x = 0 ; cont_x < size_mat ; cont_x++){
-                mat[cont_x][cont_y].off_vision = 0;
+    char cont_x, cont_y;
+    for(cont_y = 0 ; cont_y < size_y ; cont_y++){
+            for(cont_x = 0 ; cont_x < size_x ; cont_x++){
+                mat[cont_y][cont_x].off_vision = 0;
+                mat[cont_y][cont_x].in_vision = 0;
             }
         }
 }
 
-
-void print_clear(char clear,char size_mat,tile_t mat[size_mat][size_mat])
+/*void set_mines(tile_t mat[game->width][game->length],game_invar *game)
 {
-    char cont_x,cont_y;
+    char cont_x,cont_y; 
     
-    if(clear)
-    {
-        for(cont_y = 0 ; cont_y < size_mat ; cont_y++){
-            for(cont_x = 0 ; cont_x < size_mat ; cont_x++){
-                mat[cont_x][cont_y].in_vision = 0;
+    
+     for(cont_y = 0 ; cont_y < game->width ; cont_y++){
+            for(cont_x = 0 ; cont_x < game->length ; cont_x++){
+                printf(".");
+            }
+        }
+    
+    
+    
+    
+}*/
+    
+void print_clear(char size_y,char size_x,tile_t mat[size_y][size_x])
+{
+    char cont_y,cont_x;
+    
+    printf("off vision:\n");
+    for(cont_y = 0 ; cont_y < size_y ; cont_y++){
+        for(cont_x = 0 ; cont_x < size_x ; cont_x++){
+            printf("| %d ",mat[cont_y][cont_x].off_vision);
+            if(cont_x == size_x -1)
+            {
+                printf("|\n");
             }
         }
     }
-
-    for(cont_y = 0 ; cont_y < size_mat ; cont_y++){
-        for(cont_x = 0 ; cont_x < size_mat ; cont_x++){
-            printf("| %d ",mat[cont_x][cont_y].off_vision);
-            if(cont_x == size_mat -1)
+    printf("\nin vision:\n");
+    for(cont_y = 0 ; cont_y < size_y ; cont_y++){
+        for(cont_x = 0 ; cont_x < size_x ; cont_x++){
+            printf("| %d ",mat[cont_y][cont_x].in_vision);
+            if(cont_x == size_x -1)
             {
                 printf("|\n");
             }
