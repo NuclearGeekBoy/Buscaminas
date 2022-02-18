@@ -32,26 +32,33 @@ typedef struct
 }game_invar;
 
 //functs
-void init_mat(char size_y,char size_x,tile_t mat[size_y][size_x]);
-void print_clear(char size_y,char size_x,tile_t mat[size_y][size_x]);
-void set_mines(tile_t[game_invar.width][game_invar.length],game_invar*);
+void init_mat(game_invar game_data,tile_t *);
+void print_clear(game_invar game_data,tile_t*);
+//void set_mines(tile_t[game_invar.width][game_invar.length],game_invar*);
 
 int main()
 {
     srand(time(NULL));
-    tile_t mat[size_mat][size_mat+size_mat];
-    init_mat(size_mat,size_mat+size_mat,mat);
-    print_clear(size_mat,size_mat+size_mat,mat);
+    tile_t mat[size_mat][size_mat+size_mat]; //matriz
     game_invar game;
+    game.width = size_mat;
+    game.length = size_mat*2;
+    
+    tile_t *point;
+    point = (tile_t*) &mat;
+    
+    init_mat(game,point);
+    print_clear(game,point);
 }
 
-void init_mat(char size_y,char size_x,tile_t mat[size_y][size_x])
+void init_mat(game_invar game_data,tile_t *tile)
 {
     char cont_x, cont_y;
-    for(cont_y = 0 ; cont_y < size_y ; cont_y++){
-            for(cont_x = 0 ; cont_x < size_x ; cont_x++){
-                mat[cont_y][cont_x].off_vision = 0;
-                mat[cont_y][cont_x].in_vision = 0;
+    for(cont_y = 0 ; cont_y < game_data.width ; cont_y++){
+            for(cont_x = 0 ; cont_x < game_data.length ; cont_x++){
+                tile->off_vision = 0;
+                tile->in_vision = 0;
+                tile++;
             }
         }
 }
@@ -72,25 +79,25 @@ void init_mat(char size_y,char size_x,tile_t mat[size_y][size_x])
     
 }*/
     
-void print_clear(char size_y,char size_x,tile_t mat[size_y][size_x])
+void print_clear(game_invar game_data,tile_t *tile)
 {
     char cont_y,cont_x;
     
     printf("off vision:\n");
-    for(cont_y = 0 ; cont_y < size_y ; cont_y++){
-        for(cont_x = 0 ; cont_x < size_x ; cont_x++){
-            printf("| %d ",mat[cont_y][cont_x].off_vision);
-            if(cont_x == size_x -1)
+    for(cont_y = 0 ; cont_y < game_data.width ; cont_y++){
+        for(cont_x = 0 ; cont_x < game_data.length ; cont_x++){
+            printf("| %d ",tile->off_vision);
+            if(cont_x == game_data.length -1)
             {
                 printf("|\n");
             }
         }
     }
     printf("\nin vision:\n");
-    for(cont_y = 0 ; cont_y < size_y ; cont_y++){
-        for(cont_x = 0 ; cont_x < size_x ; cont_x++){
-            printf("| %d ",mat[cont_y][cont_x].in_vision);
-            if(cont_x == size_x -1)
+    for(cont_y = 0 ; cont_y < game_data.width ; cont_y++){
+        for(cont_x = 0 ; cont_x < game_data.length ; cont_x++){
+            printf("| %d ",tile->in_vision);
+            if(cont_x == game_data.length-1)
             {
                 printf("|\n");
             }
