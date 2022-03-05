@@ -82,6 +82,8 @@ void init_mat(game_invar game_data,tile_t *tile)
 void print_clear(game_invar game_data,tile_t *tile)
 {
     char cont_y,cont_x;
+    tile_t *aux;
+    aux = tile; //aux pointer to storage the start of the mat
     
     printf("off vision:\n");
     for(cont_y = 0 ; cont_y < game_data.width ; cont_y++){
@@ -91,8 +93,11 @@ void print_clear(game_invar game_data,tile_t *tile)
             {
                 printf("|\n");
             }
+            tile++;
         }
     }
+    tile = aux; //now i use it in order to printf the 'in vision' mat
+    
     printf("\nin vision:\n");
     for(cont_y = 0 ; cont_y < game_data.width ; cont_y++){
         for(cont_x = 0 ; cont_x < game_data.length ; cont_x++){
@@ -101,6 +106,7 @@ void print_clear(game_invar game_data,tile_t *tile)
             {
                 printf("|\n");
             }
+            tile++;
         }
     }
 }
